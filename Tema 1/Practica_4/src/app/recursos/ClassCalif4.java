@@ -62,7 +62,6 @@ public class ClassCalif4 extends JFrame{
         objTagBox2.setBounds(200, 60, 200, 30);
         objTagBox3.setBounds(200, 90, 200, 30);
         objTagBox4.setBounds(200, 120, 200, 30);
-
         objBottomExec.setBounds(10, 200, 100, 30);
         objBottomEnd.setBounds(150, 200, 100, 30);
         objBottomClean.setBounds(280, 200, 100, 30);
