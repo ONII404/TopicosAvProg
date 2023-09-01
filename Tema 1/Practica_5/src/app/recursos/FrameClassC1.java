@@ -17,6 +17,7 @@ public class FrameClassC1 extends JFrame {
   public FrameClassC1() {
     // Titulo de la ventana
     super("Sistema promedio sobre 4 calificaciones (FrameClassC1)");
+
     // Crear objetos de JLabel
     JLabel objTagC1 = new JLabel("Capturar calificacion  1...");
     JLabel objTagC2 = new JLabel("Capturar calificacion  2...");
@@ -24,11 +25,13 @@ public class FrameClassC1 extends JFrame {
     JLabel objTagC4 = new JLabel("Capturar calificacion  4...");
     JLabel objTagZ = new JLabel("El resultado  es...");
     JLabel objTagResult = new JLabel("...");
+
     // Crear objetos de JTextField
     JTextField objBoxC1 = new JTextField("");
     JTextField objBoxC2 = new JTextField("");
     JTextField objBoxC3 = new JTextField("");
     JTextField objBoxC4 = new JTextField("");
+    
     // Crear objetos de JButton
     JButton objBottonProm4 = new JButton("Promedio de 4 calificaciones ");
     JButton objBottonEnd = new JButton("Terminar");

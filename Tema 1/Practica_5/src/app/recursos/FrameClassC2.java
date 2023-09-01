@@ -9,6 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * author: ONII404
+ */
+
 public class FrameClassC2 extends JFrame {
 
     public FrameClassC2() {
@@ -87,7 +91,6 @@ public class FrameClassC2 extends JFrame {
             @Override
             public void mousePressed(MouseEvent me) {
                 objTagZ.setForeground(Color.red);
-
             }
 
             @Override
