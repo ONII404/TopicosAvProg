@@ -1,18 +1,20 @@
 package app.ui.Components;
 
 import java.awt.Color;
-
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class PActBtns extends JPanel{
+public class PanelBtnB extends JPanel{
 
+    GridLayout gridLayout = new GridLayout(3, 1);
     
-    public PActBtns() {
+    public PanelBtnB() {
+        super();
+        this.setBounds(220, 0, 80, 300);
         this.setLayout(null);
-        this.setSize(80, 300);
-        this.setLocation(221, 150);
-        this.setBackground(Color.gray);
+        // this.setLayout(gridLayout);
+        this.setBackground(Color.green);
         this.setVisible(true);
         this.initComponents();
         
