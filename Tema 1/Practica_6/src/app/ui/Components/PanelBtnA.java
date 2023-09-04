@@ -10,7 +10,7 @@ public class PanelBtnA extends JPanel{
     public PanelBtnA(){
         super();
         this.setBounds(0, 0, 220, 300);
-        this.setBackground(Color.LIGHT_GRAY);
+        // this.setBackground(Color.LIGHT_GRAY);
         this.setVisible(true);
         this.setLayout(gridLayout);
         this.createBtn();
