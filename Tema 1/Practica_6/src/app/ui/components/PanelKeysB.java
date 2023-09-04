@@ -36,13 +36,15 @@ public class PanelKeysB extends JPanel {
                     btn.setBounds(0, 75, 80, 74);
                     break;
                 case 2:
-                    if (PanelDisplay.jobTo == 0) {
-                        btn.setText("GO");
-                        btn.setBounds(0, 150, 80, 149);
-                    } else {
-                        btn.setText("=");
-                        btn.setBounds(0, 150, 80, 149);
-                    }
+                    btn.setText("=");
+                    btn.setBounds(0, 150, 80, 149);
+                    // if (PanelDisplay.jobTo == 0) {
+                    // btn.setText("GO");
+                    // btn.setBounds(0, 150, 80, 149);
+                    // } else {
+                    // btn.setText("=");
+                    // btn.setBounds(0, 150, 80, 149);
+                    // }
                     break;
                 default:
                     break;

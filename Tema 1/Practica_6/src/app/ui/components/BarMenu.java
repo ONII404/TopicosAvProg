@@ -9,7 +9,7 @@ import javax.swing.JCheckBoxMenuItem;
 
 /**
  * 
- *  @author ONII404
+ * @author ONII404
  */
 
 public class BarMenu extends JMenuBar {
@@ -58,9 +58,8 @@ public class BarMenu extends JMenuBar {
                     menuRaBtn.setText("Potencia");
                     break;
                 case 5:
+                    menuRaBtn.setSelected(true);
                     menuRaBtn.setText("Nada");
-                    break;
-                default:
                     break;
             }
         }

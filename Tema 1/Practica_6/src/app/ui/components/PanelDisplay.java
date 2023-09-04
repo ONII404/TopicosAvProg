@@ -40,6 +40,7 @@ public class PanelDisplay extends JPanel {
     }
 
     private void createSuma() {
+
         JLabel preNums = new JLabel("¿Cuantos numeros desea sumar?");
         preNums.setBounds(3, 5, 250, 15);
         preNums.setBackground(Color.green);
