@@ -36,7 +36,7 @@ public class MainWIndow extends JFrame {
         objMenuBar.repaint();
     }
 
-    private void addDisplay(){
+    private void addDisplay() {
         PanelDisplay objDisplayPanel = new PanelDisplay();
         this.getContentPane().add(objDisplayPanel);
         objDisplayPanel.revalidate();
@@ -49,33 +49,5 @@ public class MainWIndow extends JFrame {
         objPanelKeys.revalidate();
         objPanelKeys.repaint();
     }
-
-    // private void addTolBar() {
-    //     ToolBar objToolBar = new ToolBar();
-    //     this.getContentPane().add(objToolBar);
-    //     objToolBar.revalidate();
-    //     objToolBar.repaint();
-    // }
-
-    // private void addPNumBtns() {
-    //     PNumBtns objPNumBtns = new PNumBtns();
-    //     this.getContentPane().add(objPNumBtns);
-    //     objPNumBtns.revalidate();
-    //     objPNumBtns.repaint();
-    // }
-
-    // private void addPActBtns() {
-    //     PanelBtnA objPActBtns = new PanelBtnA();
-    //     this.getContentPane().add(objPActBtns);
-    //     objPActBtns.revalidate();
-    //     objPActBtns.repaint();
-    // }
-
-    // private void addActionMenu() {
-    //     ActionMenu objActionMenu = new ActionMenu();
-    //     this.getContentPane().add(objActionMenu);
-    //     objActionMenu.revalidate();
-    //     objActionMenu.repaint();
-    // }
 
 }
