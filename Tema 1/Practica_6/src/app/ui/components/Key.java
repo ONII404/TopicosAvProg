@@ -1,17 +1,16 @@
-package app.ui.Components;
+package app.ui.components;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Insets;
-
 import javax.swing.JButton;
 
-public class KeyButton extends JButton {
+public class Key extends JButton {
 
     Font arial = new Font("Arial", Font.BOLD, 15);
     Insets insets = new Insets(0, 0, 0, 0);
 
-    public KeyButton() {
+    public Key() {
         super();
         this.setBackground(Color.darkGray);
         this.setForeground(Color.white);

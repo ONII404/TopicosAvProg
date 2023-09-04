@@ -2,9 +2,10 @@ package app.ui;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import app.ui.Components.PanelDisplay;
-import app.ui.Components.PanelKeys;
-import app.ui.Components.MenuBar;
+import app.ui.components.BarMenu;
+import app.ui.components.PanelDisplay;
+import app.ui.components.PanelKeysA;
+import app.ui.components.PanelKeysB;
 
 /**
  * 
@@ -30,7 +31,7 @@ public class MainWIndow extends JFrame {
     }
 
     private void addMenuBar() {
-        MenuBar objMenuBar = new MenuBar();
+        BarMenu objMenuBar = new BarMenu();
         this.getContentPane().add(objMenuBar);
         objMenuBar.revalidate();
         objMenuBar.repaint();
@@ -44,10 +45,15 @@ public class MainWIndow extends JFrame {
     }
 
     private void addPanelKeys() {
-        PanelKeys objPanelKeys = new PanelKeys();
-        this.getContentPane().add(objPanelKeys);
-        objPanelKeys.revalidate();
-        objPanelKeys.repaint();
+        PanelKeysA objPanelBtnA = new PanelKeysA();
+        this.getContentPane().add(objPanelBtnA);
+        objPanelBtnA.revalidate();
+        objPanelBtnA.repaint();
+
+        PanelKeysB objPanelBtnB = new PanelKeysB();
+        this.getContentPane().add(objPanelBtnB);
+        objPanelBtnB.revalidate();
+        objPanelBtnB.repaint();
     }
 
 }

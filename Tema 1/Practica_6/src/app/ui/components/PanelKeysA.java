@@ -1,16 +1,14 @@
-package app.ui.Components;
+package app.ui.components;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 
-public class PanelBtnA extends JPanel{
+public class PanelKeysA extends JPanel{
     GridLayout gridLayout = new GridLayout(4, 3, 1, 1);
 
-    public PanelBtnA(){
+    public PanelKeysA(){
         super();
-        this.setBounds(0, 0, 220, 300);
-        // this.setBackground(Color.LIGHT_GRAY);
+        this.setBounds(0, 150, 220, 300);
         this.setVisible(true);
         this.setLayout(gridLayout);
         this.createBtn();
@@ -19,7 +17,7 @@ public class PanelBtnA extends JPanel{
     private void createBtn(){
 
         for (int i = 0; i < 12; i++) {
-            KeyButton btn = new KeyButton();
+            Key btn = new Key();
             this.add(btn);
 
             switch (i) {
