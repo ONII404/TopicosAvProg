@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  * 
@@ -13,7 +12,7 @@ import javax.swing.JTextField;
 
 public class PanelDisplay extends JPanel {
 
-    static int jobTo = 0;
+    static int jobTo = 1;
 
     private Font arial(int size, int type) {
         return new Font("Arial", Font.BOLD, size);
@@ -31,7 +30,7 @@ public class PanelDisplay extends JPanel {
     private void initComponents(int j) {
         switch (j) {
             case 1:
-                this.createSuma();
+                this.addSuma();
                 break;
             default:
                 this.noOperation();
@@ -39,23 +38,13 @@ public class PanelDisplay extends JPanel {
         }
     }
 
-    private void createSuma() {
+    private void addSuma() {
+        DisplayContent suma = new DisplayContent();
+        suma.createSuma();
 
-        JLabel preNums = new JLabel("¿Cuantos numeros desea sumar?");
-        preNums.setBounds(3, 5, 250, 15);
-        preNums.setBackground(Color.green);
-        preNums.setForeground(Color.white);
-        preNums.setVisible(true);
-        add(preNums);
-
-        JLabel nums = new JLabel("3");
-        nums.setBounds(100, 50, 100, 50);
-        nums.setFont(arial(50, ABORT));
-        nums.setForeground(Color.white);
-        nums.setHorizontalAlignment(JTextField.CENTER);
-        nums.setVisible(true);
-        add(nums);
-
+        for (JLabel label : suma.createSuma()) {
+            this.add(label);
+        }
     }
 
     private void noOperation() {
