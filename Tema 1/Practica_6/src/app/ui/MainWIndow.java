@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,11 +17,6 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import app.ui.components.Key;
-import app.ui.components.displays.DivicionDisplay;
-import app.ui.components.displays.MultiplicacionDisplay;
-import app.ui.components.displays.PotenciaDisplay;
-import app.ui.components.displays.RestaDisplay;
-import app.ui.components.displays.SumaDisplay;
 
 /**
  * 
@@ -30,11 +27,6 @@ public class MainWIndow extends JFrame {
 
     // Components
     Key key = new Key();
-    // SumaDisplay sumaDisplay = new SumaDisplay();
-    RestaDisplay restaDisplay = new RestaDisplay();
-    MultiplicacionDisplay multiplicacionDisplay = new MultiplicacionDisplay();
-    DivicionDisplay divicionDisplay = new DivicionDisplay();
-    PotenciaDisplay potenciaDisplay = new PotenciaDisplay();
 
     // Styles
     Color barMenuDark = new Color(50, 50, 50);
@@ -49,7 +41,11 @@ public class MainWIndow extends JFrame {
     // Keys
     JPanel panelKeys;
 
-    JPanel sumaDisplay;
+    JPanel opDisplay;
+    // JTextField valor1;
+    JTextField valor2;
+    JLabel simbolo;
+    Stack<String> miStack = new Stack<>();
 
     public MainWIndow() {
         super("Calculadora By ONII404");
@@ -59,7 +55,6 @@ public class MainWIndow extends JFrame {
         this.setLayout(null);
         this.setResizable(false);
         this.setBackground(Color.darkGray);
-        this.initComponents();
 
         /**
          *
@@ -80,6 +75,44 @@ public class MainWIndow extends JFrame {
         // OptionMenu here
         setJMenuBar(barMenu); // Añadimos el menu a la ventana
 
+        /*
+         * 
+         * Display de Operación
+         *
+         * 
+         */
+
+        opDisplay = new JPanel();
+        opDisplay.setBounds(0, 0, 300, 130);
+        opDisplay.setLayout(null);
+        opDisplay.setBackground(Color.darkGray);
+        opDisplay.setVisible(true);
+        this.add(opDisplay);
+
+        // Simbolo
+
+        simbolo = new JLabel("");
+        simbolo.setBounds(90, 75, 40, 40);
+        simbolo.setForeground(Color.white);
+        simbolo.setFont(new Font("Arial", Font.PLAIN, 30));
+        opDisplay.add(simbolo);
+
+        // Box1
+        // valor1 = new JTextField();
+        // valor1.setBounds(150, 10, 140, 50);
+        // valor1.setBackground(Color.darkGray);
+        // valor1.setForeground(Color.white);
+        // valor1.setVisible(true);
+        // opDisplay.add(valor1);
+
+        // Box2
+        valor2 = new JTextField();
+        valor2.setBounds(150, 70, 140, 50);
+        valor2.setBackground(Color.darkGray);
+        valor2.setForeground(Color.white);
+        valor2.setVisible(true);
+        opDisplay.add(valor2);
+
         /**
          * 
          * KeysPanel
@@ -95,20 +128,6 @@ public class MainWIndow extends JFrame {
         add(panelKeys);
         panelKeys.setVisible(true);
 
-    }
-
-    private void initComponents() {
-        this.getContentPane().add(createDisplay());
-        this.getContentPane().add(restaDisplay);
-        this.getContentPane().add(multiplicacionDisplay);
-        this.getContentPane().add(divicionDisplay);
-        this.getContentPane().add(potenciaDisplay);
-
-        sumaDisplay.setVisible(false);
-        restaDisplay.setVisible(false);
-        multiplicacionDisplay.setVisible(false);
-        divicionDisplay.setVisible(false);
-        potenciaDisplay.setVisible(false);
     }
 
     /*
@@ -151,7 +170,7 @@ public class MainWIndow extends JFrame {
                 case 5:
                     menuRaBtn.setSelected(true);
                     menuRaBtn.setText("Nada");
-                    // menuRaBtn.addActionListener(menuEvents.getActionListener(i));
+                    // menuRaBtn.addActionListener();
                     break;
             }
         }
@@ -162,10 +181,7 @@ public class MainWIndow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("setSuma");
-                sumaDisplay.setVisible(true);
-                restaDisplay.setVisible(false);
-                multiplicacionDisplay.setVisible(false);
-                divicionDisplay.setVisible(false);
+                simbolo.setText("+");
             }
         };
         return actionListener;
@@ -175,11 +191,9 @@ public class MainWIndow extends JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("setResta");
-                sumaDisplay.setVisible(false);
-                restaDisplay.setVisible(true);
-                multiplicacionDisplay.setVisible(false);
-                divicionDisplay.setVisible(false);
+                simbolo.setText("-");
+                // valor1.setVisible(true);
+                // valor2.setVisible(true);
             }
         };
         return actionListener;
@@ -190,10 +204,9 @@ public class MainWIndow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("setMultiplicacion");
-                sumaDisplay.setVisible(false);
-                restaDisplay.setVisible(false);
-                multiplicacionDisplay.setVisible(true);
-                divicionDisplay.setVisible(false);
+                simbolo.setText("x");
+                // valor1.setVisible(true);
+                // valor2.setVisible(true);
             }
         };
         return actionListener;
@@ -204,11 +217,9 @@ public class MainWIndow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("setDivicion");
-                sumaDisplay.setVisible(false);
-                restaDisplay.setVisible(false);
-                multiplicacionDisplay.setVisible(false);
-                divicionDisplay.setVisible(true);
-                potenciaDisplay.setVisible(false);
+                simbolo.setText("/");
+                // valor1.setVisible(true);
+                // valor2.setVisible(true);
             }
         };
         return actionListener;
@@ -219,12 +230,9 @@ public class MainWIndow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("setPotencia");
-                sumaDisplay.setVisible(false);
-                restaDisplay.setVisible(false);
-                multiplicacionDisplay.setVisible(false);
-                divicionDisplay.setVisible(false);
-                potenciaDisplay.setVisible(true);
-
+                simbolo.setText("xˇ");
+                // valor1.setVisible(false);
+                // valor2.setVisible(true);
             }
         };
         return actionListener;
@@ -315,7 +323,7 @@ public class MainWIndow extends JFrame {
         }
     }
 
-    public static ActionListener getKeysListener(int buttonID) {
+    public ActionListener getKeysListener(int buttonID) {
         ActionListener actionListener = null;
 
         switch (buttonID) {
@@ -324,6 +332,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("7");
+                        valor2.setText(valor2.getText() + "7");
                     }
                 };
                 break;
@@ -332,7 +341,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("8");
-
+                        valor2.setText(valor2.getText() + "8");
                     }
                 };
                 break;
@@ -341,7 +350,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("9");
-
+                        valor2.setText(valor2.getText() + "9");
                     }
                 };
                 break;
@@ -349,8 +358,7 @@ public class MainWIndow extends JFrame {
                 actionListener = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("<-");
-
+                        valor2.setText("");
                     }
                 };
                 break;
@@ -359,7 +367,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("4");
-
+                        valor2.setText(valor2.getText() + "4");
                     }
                 };
                 break;
@@ -368,7 +376,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("5");
-
+                        valor2.setText(valor2.getText() + "5");
                     }
                 };
                 break;
@@ -377,7 +385,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("6");
-
+                        valor2.setText(valor2.getText() + "6");
                     }
                 };
                 break;
@@ -386,7 +394,8 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("CE");
-
+                        System.out.println("Cola Vacia: " + miStack.empty());
+                        miStack.clear();
                     }
                 };
                 break;
@@ -395,7 +404,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("1");
-
+                        valor2.setText(valor2.getText() + "1");
                     }
                 };
                 break;
@@ -404,7 +413,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("2");
-
+                        valor2.setText(valor2.getText() + "2");
                     }
                 };
                 break;
@@ -413,7 +422,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("3");
-
+                        valor2.setText(valor2.getText() + "3");
                     }
                 };
                 break;
@@ -421,8 +430,8 @@ public class MainWIndow extends JFrame {
                 actionListener = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("GO");
-
+                        System.out.println("Agregado: " + valor2.getText());
+                        miStack.push(valor2.getText());
                     }
                 };
                 break;
@@ -439,6 +448,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("0");
+                        valor2.setText(valor2.getText() + "0");
                     }
                 };
                 break;
@@ -447,6 +457,7 @@ public class MainWIndow extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println(".");
+                        valor2.setText(valor2.getText() + ".");
                     }
                 };
                 break;
@@ -458,67 +469,10 @@ public class MainWIndow extends JFrame {
                     }
                 };
         }
-
         return actionListener;
     }
 
-    public JPanel createDisplay() {
-        sumaDisplay = new JPanel();
-        sumaDisplay.setBounds(0, 0, 300, 130);
-        sumaDisplay.setLayout(null);
-        sumaDisplay.setBackground(Color.darkGray);
-
-        int x = 1;
-
-        if (x == 5) {
-            JTextField valor1;
-
-            JLabel simbolo;
-            // Box1
-            valor1 = new JTextField();
-            valor1.setBounds(150, 10, 140, 50);
-            valor1.setBackground(Color.darkGray);
-            valor1.setForeground(Color.white);
-            sumaDisplay.add(valor1);
-
-            // Simbolo
-
-            simbolo = new JLabel("+");
-            simbolo.setBounds(90, 75, 40, 40);
-            simbolo.setForeground(Color.white);
-            simbolo.setFont(new Font("Arial", Font.PLAIN, 30));
-            sumaDisplay.add(simbolo);
-        } else {
-
-            JTextField valor1;
-            JTextField valor2;
-            JLabel simbolo;
-            // Box1
-            valor1 = new JTextField();
-            valor1.setBounds(150, 10, 140, 50);
-            valor1.setBackground(Color.darkGray);
-            valor1.setForeground(Color.white);
-            sumaDisplay.add(valor1);
-
-            // Box2
-            valor2 = new JTextField();
-            valor2.setBounds(150, 70, 140, 50);
-            valor2.setBackground(Color.darkGray);
-            valor2.setForeground(Color.white);
-            sumaDisplay.add(valor2);
-
-            // Simbolo
-
-            simbolo = new JLabel("+");
-            simbolo.setBounds(90, 75, 40, 40);
-            simbolo.setForeground(Color.white);
-            simbolo.setFont(new Font("Arial", Font.PLAIN, 30));
-            sumaDisplay.add(simbolo);
-
-        }
 
 
 
-        return sumaDisplay;
-    }
 }
