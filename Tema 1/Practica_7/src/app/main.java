@@ -6,7 +6,7 @@ import app.components.gui;
 
 /**
  *
- * @author onnx
+ * @author ONII404
  */
 public class main {
 
