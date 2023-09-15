@@ -1,24 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app;
+
+import app.components.gui;
 
 /**
  *
- * @author onnx
+ * @author ONII404
  */
 public class main {
 
     public static void main(String[] args) {
 
+        // Invocamos el metodo que crea la ventana
         createAndShowGUI();
 
     }
 
     public static void createAndShowGUI() {
-        app.components.gui objMainWIndows = new app.components.gui();
-        objMainWIndows.setVisible(true);
+
+        // Instanciamos la clase gui
+        gui objMainWIndows = new gui();
+        objMainWIndows.setVisible(true); // Hacemos visible la ventana
 
     }
 

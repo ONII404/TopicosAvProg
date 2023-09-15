@@ -16,18 +16,15 @@ import java.awt.event.ActionListener;
 
 public class gui extends JFrame {
 
-    private JRadioButton r1;
-    private JRadioButton r2;
-
-    private JLabel resLabel;
-
     private String[] labelsText = { "Peso", "Altura", "Dia de nacimiento", "Mes de nacimiento" };
-    private JLabel[] labels = new JLabel[labelsText.length];
-
-    private JTextField[] textFields = new JTextField[labelsText.length];
-
     private String[] buttonsText = { "Calcular", "Limpiar", "Salir" };
+
+    private JLabel[] labels = new JLabel[labelsText.length];
+    private JTextField[] textFields = new JTextField[labelsText.length];
     private JButton[] buttons = new JButton[buttonsText.length];
+
+    private JRadioButton r1, r2;
+    private JLabel resLabel;
     ButtonGroup group = new ButtonGroup();
 
     public gui() {
@@ -124,85 +121,99 @@ public class gui extends JFrame {
         } else if (r2.isSelected()) {
             int dia = Integer.parseInt(textFields[2].getText());
             int mes = Integer.parseInt(textFields[3].getText());
-            resLabel.setText("Signo: " + signosSodiacales(dia, mes));
+            resLabel.setText("Signo: " + signosZodiacales(dia, mes));
         }
 
     }
 
-    private String signosSodiacales(int dia, int mes) {
-
-        // Aries
-        if (mes == 3 && dia >= 21 || mes == 4 && dia <= 19) {
-            resLabel.setText("Aries");
-            return "Aries";
+    private String signosZodiacales(int dia, int mes) {
+        String signo = "";
+        switch (mes) {
+            case 1:
+                if (dia <= 20) {
+                    signo = "Capricornio";
+                } else if (dia >= 21) {
+                    signo = "Acuario";
+                }
+                break;
+            case 2:
+                if (dia <= 20) {
+                    signo = "Acuario";
+                } else if (dia >= 21) {
+                    signo = "Piscis";
+                }
+                break;
+            case 3:
+                if (dia >= 21) {
+                    signo = "Aries";
+                } else {
+                    signo = "Piscis";
+                }
+                break;
+            case 4:
+                if (dia <= 19) {
+                    signo = "Aries";
+                } else if (dia >= 20) {
+                    signo = "Tauro";
+                }
+                break;
+            case 5:
+                if (dia <= 20) {
+                    signo = "Tauro";
+                } else if (dia >= 21) {
+                    signo = "Géminis";
+                }
+                break;
+            case 6:
+                if (dia <= 20) {
+                    signo = "Géminis";
+                } else if (dia >= 21) {
+                    signo = "Cáncer";
+                }
+                break;
+            case 7:
+                if (dia <= 20) {
+                    signo = "Cáncer";
+                } else if (dia >= 21) {
+                    signo = "Leo";
+                }
+                break;
+            case 8:
+                if (dia <= 20) {
+                    signo = "Leo";
+                } else if (dia >= 21) {
+                    signo = "Virgo";
+                }
+                break;
+            case 9:
+                if (dia >= 23) {
+                    signo = "Libra";
+                } else {
+                    signo = "Virgo";
+                }
+                break;
+            case 10:
+                if (dia <= 22) {
+                    signo = "Libra";
+                } else if (dia >= 21) {
+                    signo = "Escorpio";
+                }
+                break;
+            case 11:
+                if (dia <= 20) {
+                    signo = "Escorpio";
+                } else if (dia >= 21) {
+                    signo = "Sagitario";
+                }
+                break;
+            case 12:
+                if (dia <= 20) {
+                    signo = "Sagitario";
+                } else if (dia >= 21) {
+                    signo = "Capricornio";
+                }
+                break;
         }
-
-        // Tauro
-        else if (mes == 4 && dia >= 20 || mes == 5 && dia <= 20) {
-            resLabel.setText("Tauro");
-            return "Tauro";
-        }
-
-        // Geminis
-        else if (mes == 5 && dia >= 21 || mes == 6 && dia <= 20) {
-            resLabel.setText("Geminis");
-            return "Geminis";
-        }
-
-        // Cancer
-        else if (mes == 6 && dia >= 21 || mes == 7 && dia <= 20) {
-            resLabel.setText("Cancer");
-            return "Cancer";
-        }
-
-        // Leo
-        else if (mes == 7 && dia >= 21 || mes == 8 && dia <= 20) {
-            resLabel.setText("Leo");
-            return "Leo";
-        }
-
-        // Virgo
-        else if (mes == 8 && dia >= 21 || mes == 9 && dia <= 20) {
-            resLabel.setText("Virgo");
-            return "Virgo";
-        }
-
-        // Libra
-        else if (mes == 9 && dia >= 23 || mes == 10 && dia <= 22) {
-            resLabel.setText("Libra");
-            return "Libra";
-        }
-
-        // Escorpio
-        else if (mes == 10 && dia >= 21 || mes == 11 && dia <= 20) {
-            resLabel.setText("Escorpio");
-            return "Escorpio";
-        }
-
-        // Sagitario
-        else if (mes == 11 && dia >= 21 || mes == 12 && dia <= 20) {
-            resLabel.setText("Sagitario");
-            return "Sagitario";
-        }
-
-        // Capricornio
-        else if (mes == 12 && dia >= 21 || mes == 1 && dia <= 20) {
-            resLabel.setText("Capricornio");
-            return "Capricornio";
-        }
-
-        // Acuario
-        else if (mes == 1 && dia >= 21 || mes == 2 && dia <= 20) {
-            resLabel.setText("Acuario");
-            return "Acuario";
-        }
-
-        // Piscis
-        else if (mes == 2 && dia >= 21 || mes == 3 && dia <= 20) {
-            resLabel.setText("Piscis");
-            return "Piscis";
-        }
-
-        return "";
+        return signo;
     }
 }

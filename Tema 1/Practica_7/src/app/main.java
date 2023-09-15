@@ -1,7 +1,5 @@
 package app;
 
-import javax.swing.SwingUtilities;
-
 import app.components.gui;
 
 /**
@@ -12,17 +10,14 @@ public class main {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
+        // arrancamos la interfaz grafica
+        createAndShowGUI();
     }
 
     public static void createAndShowGUI() {
+        // Instanciamos la interfaz grafica
         gui objMainWIndows = new gui();
-        objMainWIndows.setVisible(true);
-
+        objMainWIndows.setVisible(true); // La hacemos visible
     }
-    
+
 }

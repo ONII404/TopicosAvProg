@@ -11,15 +11,15 @@ public class gui extends JFrame {
 
     int total;
 
-    String[] labelText = {"Dias", "Hotel", "Comida", "Taxi"};
-    JLabel[] text = new JLabel[labelText.length];
-    JTextField[] input = new JTextField[labelText.length];
+    String[] LABEL_NAMES = {"Dias", "Hotel", "Comida", "Taxi"};
+    String[] LABEL2_NAMES = {"Total: ", "Hotel: ", "Comida: ", "Taxi: "};
+    String[] BUTTON_NAMES = {"Calcular", "Limpiar", "Salir"};
+    
+    JLabel[] text = new JLabel[LABEL_NAMES.length];
+    JTextField[] input = new JTextField[LABEL_NAMES.length];
+    JLabel[] listLabel = new JLabel[LABEL2_NAMES.length];
+    JButton[] btn = new JButton[BUTTON_NAMES.length];
 
-    String[] listText = {"Total: ", "Hotel: ", "Comida: ", "Taxi: "};
-    JLabel[] listLabel = new JLabel[listText.length];
-
-    String[] btnText = {"Calcular", "Limpiar", "Salir"};
-    JButton[] btn = new JButton[btnText.length];
 
     public gui() {
         this.setTitle("Monto del Cheque");
@@ -28,8 +28,8 @@ public class gui extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        for (int i = 0; i < labelText.length; i++) {
-            text[i] = new JLabel(labelText[i]);
+        for (int i = 0; i < LABEL_NAMES.length; i++) {
+            text[i] = new JLabel(LABEL_NAMES[i]);
             text[i].setBounds(10, 10 + (i * 30), 100, 30);
             this.add(text[i]);
 
@@ -38,13 +38,13 @@ public class gui extends JFrame {
             this.add(input[i]);
 
             if (i < 3) {
-                btn[i] = new JButton(btnText[i]);
+                btn[i] = new JButton(BUTTON_NAMES[i]);
                 btn[i].addActionListener(btnFuntion(i));
                 btn[i].setBounds(50 + (i * 100), 200, 100, 30);
                 this.add(btn[i]);
             }
 
-            listLabel[i] = new JLabel(listText[i]);
+            listLabel[i] = new JLabel(LABEL2_NAMES[i]);
             listLabel[i].setBounds(250, 10 + (i * 30), 100, 30);
             this.add(listLabel[i]);
         }
@@ -66,15 +66,15 @@ public class gui extends JFrame {
 
                     int taxiTotal = Integer.parseInt(input[3].getText()) * Integer.parseInt(input[0].getText());
 
-                    listLabel[0].setText(listText[0] + total);
-                    listLabel[1].setText(listText[1] + hotelTotal);
-                    listLabel[2].setText(listText[2] + comidaTotal);
-                    listLabel[3].setText(listText[3] + taxiTotal);
+                    listLabel[0].setText(LABEL2_NAMES[0] + total);
+                    listLabel[1].setText(LABEL2_NAMES[1] + hotelTotal);
+                    listLabel[2].setText(LABEL2_NAMES[2] + comidaTotal);
+                    listLabel[3].setText(LABEL2_NAMES[3] + taxiTotal);
 
                 } else if (btnID == 1) {
                     for (int i = 0; i < input.length; i++) {
                         input[i].setText("");
-                        listLabel[i].setText(listText[i]);
+                        listLabel[i].setText(LABEL2_NAMES[i]);
                     }
                 } else if (btnID == 2) {
                     System.exit(0);

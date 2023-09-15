@@ -1,5 +1,7 @@
 package app;
 
+import app.components.gui;
+
 /**
  *
  * @author onnx
@@ -7,7 +9,7 @@ package app;
 public class main {
 
     public static void main(String[] args) {
-        app.components.gui gui = new app.components.gui();
+        gui gui = new gui();
         gui.setVisible(true);
     }
 
