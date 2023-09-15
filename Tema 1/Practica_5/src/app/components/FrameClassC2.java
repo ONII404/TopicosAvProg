@@ -1,4 +1,4 @@
-package app.recursos;
+package app.components;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -10,7 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /**
- * author: ONII404
+ * 
+ * @author: Loredo
  */
 
 public class FrameClassC2 extends JFrame {
