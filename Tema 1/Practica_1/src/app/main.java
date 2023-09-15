@@ -1,5 +1,5 @@
 package app;
-// Importamos el Recurso frameClass
+
 import app.recursos.frameClass;
 
 /**
@@ -10,9 +10,9 @@ public class main {
 
     public static void main(String[] args) {
 
-        // Creacion de un Nuevo Objeto de la Clase frameClass
-        frameClass objFrame = new frameClass();
-        objFrame.setVisible(true);
+        // Creación de la instancia de la clase de nuestra Ventana
+        frameClass frameWindow = new frameClass();
+        frameWindow.setVisible(true);// la hacemos visible
     }
 
 }
