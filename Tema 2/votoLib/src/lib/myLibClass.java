@@ -16,7 +16,6 @@ public class myLibClass {
         }
     }
 
-
     // Realice un proyecto para determinar el sueldo semanal de un trabajador con base en las horas trabajadas y el pago por hora, considerando que después de las 40 horas cada hora se considera como excedente y se paga el doble.
 
     public double sueldoSemanal(double horas, double pago) {
