@@ -41,11 +41,11 @@ public class main extends javax.swing.JFrame {
         langAl = new javax.swing.JRadioButton();
         langIt = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
-        outTls = new javax.swing.JTextField();
         btnEnd = new javax.swing.JButton();
         btnCls = new javax.swing.JButton();
         btnTls = new javax.swing.JButton();
         btnTestIcon = new javax.swing.JButton();
+        outTls = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
@@ -87,8 +87,6 @@ public class main extends javax.swing.JFrame {
 
         jLabel2.setText("Traducción");
 
-        outTls.setEditable(false);
-
         btnEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/icons/outImage.png"))); // NOI18N
         btnEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +110,8 @@ public class main extends javax.swing.JFrame {
 
         btnTestIcon.setPreferredSize(new java.awt.Dimension(24, 24));
 
+        outTls.setText("...");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,8 +128,8 @@ public class main extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(outTls, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addComponent(outTls, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(55, 55, 55)
                                         .addComponent(btnTls)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnCls))))
@@ -140,7 +140,7 @@ public class main extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(langEn)
                                         .addComponent(langIt)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(btnEnd)
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -160,23 +160,27 @@ public class main extends javax.swing.JFrame {
                         .addComponent(btnEnd)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnTls)
-                        .addComponent(btnCls)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(langEn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(langIt)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(langAl)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(outTls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(btnTestIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(langEn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(langIt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(langAl)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outTls, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnTls)
+                                .addComponent(btnCls)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(btnTestIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         // Icono del boton btnTestIcon
@@ -206,19 +210,31 @@ public class main extends javax.swing.JFrame {
         // Idioma Ingles
         JOptionPane.showMessageDialog(rootPane, "Ingles Seleccionado!");
         
+        libP9 myLib = new libP9();
+        String txt = txtListEs.getSelectedValue();
+        outTls.setText(myLib.getTlsTxt(txt, "En"));
+        
         
         
     }//GEN-LAST:event_langEnActionPerformed
 
     private void langAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langAlActionPerformed
-        // Idioma Italiano
+        // Idioma Aleman
         JOptionPane.showMessageDialog(rootPane, "Aleman Seleccionado!");
+        
+        libP9 myLib = new libP9();
+        String txt = txtListEs.getSelectedValue();
+        outTls.setText(myLib.getTlsTxt(txt, "Al"));
         
     }//GEN-LAST:event_langAlActionPerformed
 
     private void langItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langItActionPerformed
-        // Idioma Aleman
+        // Idioma Italiano
         JOptionPane.showMessageDialog(rootPane, "Italiano Seleccionado!");
+        
+        libP9 myLib = new libP9();
+        String txt = txtListEs.getSelectedValue();
+        outTls.setText(myLib.getTlsTxt(txt, "It"));
         
     }//GEN-LAST:event_langItActionPerformed
 
@@ -299,7 +315,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JRadioButton langAl;
     private javax.swing.JRadioButton langEn;
     private javax.swing.JRadioButton langIt;
-    private javax.swing.JTextField outTls;
+    private javax.swing.JLabel outTls;
     private javax.swing.JList<String> txtListEs;
     // End of variables declaration//GEN-END:variables
 }
