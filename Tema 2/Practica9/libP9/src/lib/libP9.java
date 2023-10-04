@@ -8,45 +8,36 @@ public class libP9 {
     // Traducciones español a Ingles, Italiano y Aleman
     private Map<String, String> tlsMap = new HashMap<String, String>() {
         {
-            // Hola
-            put("HolaEn", "Hello");
+            put("HolaEn", "Hello"); // Hola
             put("HolaIt", "Ciao");
             put("HolaAl", "Hallo");
 
-            // Adios
-            put("AdiosEn", "Goodbye");
+            put("AdiosEn", "Goodbye"); // Adios
             put("AdiosIt", "Addio");
             put("AdiosAl", "Auf Wiedersehen");
 
-            // Puerta
-            put("PuertaEn", "Door");
+            put("PuertaEn", "Door"); // Puerta
             put("PuertaIt", "Porta");
             put("PuertaAl", "Tür");
 
-            // Ventana
-            put("VentanaEn", "Window");
+            put("VentanaEn", "Window"); // Ventana
             put("VentanaIt", "Finestra");
             put("VentanaAl", "Fenster");
 
-            // Ratón
-            put("RatónEn", "Mouse");
+            put("RatónEn", "Mouse"); // Ratón
             put("RatónIt", "Topo");
             put("RatónAl", "Maus");
 
-            // Automovil
-            put("AutomovilEn", "Car");
+            put("AutomovilEn", "Car"); // Automovil
             put("AutomovilIt", "Automobile");
             put("AutomovilAl", "Auto");
 
-            // Casa
-            put("CasaEn", "House");
+            put("CasaEn", "House"); // Casa
             put("CasaIt", "Casa");
             put("CasaAl", "Haus");
-
         }
     };
 
-    
     /**
      * 
      * @param txt Texto a Traducir
@@ -56,5 +47,4 @@ public class libP9 {
     public String getTlsTxt(String txt, String tls) {
         return tlsMap.get(txt + tls);
     }
-
 }
