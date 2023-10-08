@@ -11,7 +11,7 @@ public class MyLibClass {
         if(num > 0){
             return "Positivo";
         }else if(num < 0){
-            return "Negatioe";
+            return "Negativo";
         }else{
             return "cero";
         }

@@ -113,11 +113,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         int numero = Integer.valueOf(num.getText());
         System.out.println(lib.validNum(numero));
-        
         resultado.setText(lib.validNum(numero));
-        
-        
-        
     }//GEN-LAST:event_calcularBtnActionPerformed
 
     /**
