@@ -3,28 +3,32 @@ package lib;
 import lib.components.Producto;
 import lib.components.Validator;
 import lib.components.Cart;
-import java.util.ArrayList;
 import javax.swing.ButtonModel;
 
+
+/**
+ * 
+ * @author ONII404
+ */
 public class LibP10 {
 
     private Producto productoIn;
     Cart cartClass = new Cart();
-    // private ArrayList<Producto> cart = new ArrayList<Producto>();
 
     /**
      * 
      * @implNote Función para validar los datos del producto
      * 
-     * @param codeM codigo del producto
-     * @param depMerch departamento del producto
-     * @param priceM precio del producto
-     * @param quantity cantidad de productos
-     * @param isrM impuesto del producto [ButtonModel]
+     * @param codeM     codigo del producto
+     * @param depMerch  departamento del producto
+     * @param priceM    precio del producto
+     * @param quantity  cantidad de productos
+     * @param isrM      impuesto del producto [ButtonModel]
      * @param discountM descuento
      * @return true si los datos son válidos, false en caso contrario
      */
-    public boolean setProductoIn(String codeM, String depMerch, String priceM, String quantity, ButtonModel isrM, String discountM) {
+    public boolean setProductoIn(String codeM, String depMerch, String priceM, String quantity, ButtonModel isrM,
+            String discountM) {
 
         Validator validate = new Validator();
         boolean valido = validate.validateData(codeM, depMerch, priceM, quantity, isrM, discountM);
@@ -34,8 +38,19 @@ public class LibP10 {
         }
         return valido;
     }
-    
-    private void addProductIn(String codeM, String depMerch, String priceM, String quantity, ButtonModel isrM, String discountM) {
+
+    /**
+     * @implNote Función para agregar un producto a la cola
+     * 
+     * @param codeM Codigo del producto
+     * @param depMerch Departamento del producto
+     * @param priceM Precio del producto
+     * @param quantity Cantidad de productos
+     * @param isrM Impuesto del producto [ButtonModel]
+     * @param discountM Descuento del producto
+     */
+    private void addProductIn(String codeM, String depMerch, String priceM, String quantity, ButtonModel isrM,
+            String discountM) {
         productoIn = new Producto(codeM, depMerch, priceM, quantity, isrM, discountM);
     }
 
@@ -71,26 +86,11 @@ public class LibP10 {
         productoIn = null;
     }
 
-
-
-/*
- * 
-
-
-
-
-
-
-
-
-
-
-
-
-
- */
-
-
+    /*
+     *
+     * CARRITO
+     * 
+     */
 
     /**
      * 
@@ -105,7 +105,7 @@ public class LibP10 {
      * @implNote Función para obtener el carrito
      * @return el String[] del carrito
      */
-    public String[] getCart(){
+    public String[] getCart() {
         return cartClass.getCart();
     }
 
@@ -120,6 +120,7 @@ public class LibP10 {
 
     /**
      * 
+     * @implNote Función para eliminar un producto del carrito
      * @param index Indice del producto a eliminar
      */
     public void rmvCartItem(int index) {
