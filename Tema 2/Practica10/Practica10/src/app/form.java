@@ -1,15 +1,18 @@
 package app;
 
+
+
 import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
 import lib.LibP10;
 
 public class form extends javax.swing.JFrame {
 
-    String cMerchV, depMerchV, pMerchV, qMerchV, desMerchV;
-    ButtonModel isrRaBtn;
     LibP10 myLib = new LibP10();
     DefaultListModel model = new DefaultListModel();
+    
+    String cMerchV, depMerchV, pMerchV, qMerchV, desMerchV;
+    ButtonModel isrRaBtn;
 
     /**
      * Creates new form form
@@ -56,12 +59,12 @@ public class form extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         cart = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
-        buyCart = new javax.swing.JButton();
+        btnBuyCart = new javax.swing.JButton();
         btnClsCart = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnEnd = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cartTotal = new javax.swing.JLabel();
-        removeItemCart = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -94,11 +97,6 @@ public class form extends javax.swing.JFrame {
         isrGroup.add(isr8);
         isr8.setText("8% ISR");
         isr8.setActionCommand("8ISR");
-        isr8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isr8ActionPerformed(evt);
-            }
-        });
 
         isrGroup.add(isr16);
         isr16.setText("16% ISR");
@@ -131,6 +129,7 @@ public class form extends javax.swing.JFrame {
         });
 
         btnAddtoCart.setText("Add");
+        btnAddtoCart.setEnabled(false);
         btnAddtoCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddtoCartActionPerformed(evt);
@@ -241,14 +240,19 @@ public class form extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
 
+        cart.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                cartValueChanged(evt);
+            }
+        });
         jScrollPane4.setViewportView(cart);
 
         jLabel2.setText("Carrito");
 
-        buyCart.setText("Comprar");
-        buyCart.addActionListener(new java.awt.event.ActionListener() {
+        btnBuyCart.setText("Comprar");
+        btnBuyCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buyCartActionPerformed(evt);
+                btnBuyCartActionPerformed(evt);
             }
         });
 
@@ -259,10 +263,10 @@ public class form extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Finalizar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEnd.setText("Finalizar");
+        btnEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEndActionPerformed(evt);
             }
         });
 
@@ -270,7 +274,13 @@ public class form extends javax.swing.JFrame {
 
         cartTotal.setText("...");
 
-        removeItemCart.setText("Remover");
+        btnRemove.setText("Borrar");
+        btnRemove.setEnabled(false);
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -291,15 +301,15 @@ public class form extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(btnClsCart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buyCart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(btnBuyCart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGap(7, 7, 7)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(removeItemCart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cartTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -314,12 +324,12 @@ public class form extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buyCart)
-                    .addComponent(removeItemCart))
+                    .addComponent(btnBuyCart)
+                    .addComponent(btnRemove))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClsCart)
-                    .addComponent(jButton6))
+                    .addComponent(btnEnd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -332,21 +342,16 @@ public class form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void isr8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isr8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_isr8ActionPerformed
-
     private void btnClsCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClsCartActionPerformed
-
         // BOTON LIMPIEZA CARRITO
         model.removeAllElements();
         myLib.clsCart();
-        cartTotal.setText("");
+        cartTotal.setText("..");
     }//GEN-LAST:event_btnClsCartActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnEndActionPerformed
 
     private void btnCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCotizarActionPerformed
         cMerchV = codeMerch.getText();
@@ -356,10 +361,13 @@ public class form extends javax.swing.JFrame {
         isrRaBtn = isrGroup.getSelection(); // ModelButton
         desMerchV = descMerch.getText();
 
-        if (myLib.getProductoIn(cMerchV, depMerchV, pMerchV, qMerchV, isrRaBtn, desMerchV) == true) {
+        if (myLib.setProductoIn(cMerchV, depMerchV, pMerchV, qMerchV, isrRaBtn, desMerchV) == true) {
             subTotalOut.setText(myLib.getSubTotal());
             totalMerch.setText(myLib.getTotal());
+            btnAddtoCart.setEnabled(true);
         }
+        
+        
     }//GEN-LAST:event_btnCotizarActionPerformed
 
     private void btnClsMerchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClsMerchActionPerformed
@@ -373,21 +381,49 @@ public class form extends javax.swing.JFrame {
         subTotalOut.setText("..");
         totalMerch.setText("..");
         myLib.clsProductoIn();
+        btnAddtoCart.setEnabled(false);
     }//GEN-LAST:event_btnClsMerchActionPerformed
 
     private void btnAddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddtoCartActionPerformed
         // BOTON AÑADIR AL CARRITO
+        myLib.addToCart();
+        String[] cartArray =  myLib.getCart();
         cart.setModel(model);
-        if (myLib.validProduct()) {
-            model.addElement(myLib.getCartItemAdded());
+        model.removeAllElements();
+        
+        for (String string : cartArray) {
+            model.addElement(string);
         }
+        btnAddtoCart.setEnabled(false);
     }//GEN-LAST:event_btnAddtoCartActionPerformed
 
-    private void buyCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyCartActionPerformed
+    private void btnBuyCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyCartActionPerformed
         // COMPRAR EL CARRITO
         System.out.println(myLib.getCartTotal());
         cartTotal.setText(myLib.getCartTotal());
-    }//GEN-LAST:event_buyCartActionPerformed
+    }//GEN-LAST:event_btnBuyCartActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        
+        myLib.rmvCartItem(cart.getSelectedIndex());
+
+        String[] cartArray =  myLib.getCart();
+        cart.setModel(model);
+        model.removeAllElements();
+        
+        for (String string : cartArray) {
+            model.addElement(string);
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void cartValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_cartValueChanged
+        
+        if (cart.isSelectionEmpty()) {
+            btnRemove.setEnabled(false);
+        }else{
+            btnRemove.setEnabled(true);
+        }
+    }//GEN-LAST:event_cartValueChanged
 
     /**
      * @param args the command line arguments
@@ -426,10 +462,12 @@ public class form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddtoCart;
+    private javax.swing.JButton btnBuyCart;
     private javax.swing.JButton btnClsCart;
     private javax.swing.JButton btnClsMerch;
     private javax.swing.JButton btnCotizar;
-    private javax.swing.JButton buyCart;
+    private javax.swing.JButton btnEnd;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JList<String> cart;
     private javax.swing.JLabel cartTotal;
     private javax.swing.JTextField codeMerch;
@@ -439,7 +477,6 @@ public class form extends javax.swing.JFrame {
     private javax.swing.JRadioButton isr8;
     private javax.swing.ButtonGroup isrGroup;
     private javax.swing.JRadioButton isrNull;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -455,7 +492,6 @@ public class form extends javax.swing.JFrame {
     private javax.swing.JLabel labelTotalMerch;
     private javax.swing.JTextField priceMerch;
     private javax.swing.JTextField quantMerch;
-    private javax.swing.JButton removeItemCart;
     private javax.swing.JLabel subTotalOut;
     private javax.swing.JLabel totalMerch;
     // End of variables declaration//GEN-END:variables

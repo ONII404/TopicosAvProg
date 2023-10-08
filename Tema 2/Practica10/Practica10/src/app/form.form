@@ -248,9 +248,6 @@
               <Connection code="&quot;8ISR&quot;" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isr8ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="isr16">
           <Properties>
@@ -313,6 +310,7 @@
         <Component class="javax.swing.JButton" name="btnAddtoCart">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddtoCartActionPerformed"/>
@@ -342,18 +340,18 @@
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="btnClsCart" max="32767" attributes="0"/>
-                                  <Component id="buyCart" max="32767" attributes="0"/>
+                                  <Component id="btnBuyCart" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Component id="jButton6" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Component id="btnEnd" min="-2" pref="88" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="removeItemCart" max="32767" attributes="0"/>
+                                      <Component id="btnRemove" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -376,13 +374,13 @@
                   <Component id="jScrollPane4" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="buyCart" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="removeItemCart" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBuyCart" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRemove" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnClsCart" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEnd" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="61" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -408,6 +406,9 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="cartValueChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -419,12 +420,12 @@
             <Property name="text" type="java.lang.String" value="Carrito"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="buyCart">
+        <Component class="javax.swing.JButton" name="btnBuyCart">
           <Properties>
             <Property name="text" type="java.lang.String" value="Comprar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buyCartActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuyCartActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClsCart">
@@ -435,12 +436,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClsCartActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="btnEnd">
           <Properties>
             <Property name="text" type="java.lang.String" value="Finalizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEndActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -453,10 +454,14 @@
             <Property name="text" type="java.lang.String" value="..."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="removeItemCart">
+        <Component class="javax.swing.JButton" name="btnRemove">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remover"/>
+            <Property name="text" type="java.lang.String" value="Borrar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
