@@ -5,13 +5,17 @@ import java.util.ArrayList;
 public class Cart {
     
     private ArrayList<Producto> cart = new ArrayList<Producto>();
-    private double totalCart;
 
+    /**
+     * 
+     * @implNote Constructor de la clase Cart
+     */
     public Cart() {
     }
 
     /**
      * 
+     * @implNote Función para agregar un producto al carrito
      * @param producto producto a agregar al carrito
      */
     public void addProduct(Producto producto) {
@@ -20,6 +24,7 @@ public class Cart {
 
     /**
      * 
+     * @implNote Función para eliminar un producto del carrito
      * @param productoIndex indice del producto a eliminar
      */
     public void removeProduct(int productoIndex) {
@@ -40,6 +45,7 @@ public class Cart {
 
     /**
      * 
+     * @implNote Función para obtener el tamaño del carrito
      * @return Retorna el tamaño del carrito
      */
     public int getSize() {
@@ -48,10 +54,11 @@ public class Cart {
 
     /**
      * 
+     * @implNote Función para obtener el total del carrito
      * @return Retorna el total del carrito
      */
     public double getTotalCart() {
-        totalCart = 0;
+        double totalCart = 0;
         for (Producto producto : cart) {
             totalCart += producto.getTotalM();
         }
@@ -60,6 +67,7 @@ public class Cart {
 
     /**
      * 
+     * @implNote Función para obtener el carrito
      * @return Retorna el carrito como String[]
      */
     public String[] getCart() {
